@@ -25,6 +25,19 @@ public class UsuarioController {
         return this.usuarioService.guardarUsuario(usuario);
     }
 
+    /**
+     * Se agrega método para modificar un usuario
+     *
+     * @param user recibe el usuario que se va a modificar
+     * @param id recibe el id del usuario que se va a modificar
+     * @return devuelve el usuario modificado
+     */
+    @PostMapping(path = "/{id}")
+    public UsuarioModel updateUser(@RequestBody UsuarioModel user, @PathVariable("id") Long id){
+        user.setId(id);
+        return this.usuarioService.guardarUsuario(user);
+    }
+
     @GetMapping(path = "/{id}")
     public Optional<UsuarioModel> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return this.usuarioService.obtenerPorId(id);
